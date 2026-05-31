@@ -1,0 +1,14 @@
+# MySQL untuk lokal — cocok dengan backend/config/config.json (development)
+# Jalankan: docker compose up -d
+# Lalu di folder backend: npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: database_development
+    ports:
+      - "3306:3306"
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
